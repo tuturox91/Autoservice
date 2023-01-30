@@ -1,9 +1,8 @@
 package org.sniklz.autoservice.service;
 
-import org.sniklz.autoservice.model.Car;
-
 import java.util.List;
 import java.util.Set;
+import org.sniklz.autoservice.model.Car;
 
 public interface CarService extends DefaultService<Car> {
 

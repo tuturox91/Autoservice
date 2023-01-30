@@ -1,12 +1,11 @@
 package org.sniklz.autoservice.service.impl;
 
+import java.util.List;
+import java.util.Set;
 import org.sniklz.autoservice.model.Product;
 import org.sniklz.autoservice.repository.ProductRepository;
 import org.sniklz.autoservice.service.ProductService;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Set;
 
 @Service
 public class ProductServiceImpl implements ProductService {

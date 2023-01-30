@@ -2,6 +2,8 @@ package org.sniklz.autoservice.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.sniklz.autoservice.dto.request.OrderRequestDto;
 import org.sniklz.autoservice.dto.response.OrderResponseDto;
 import org.sniklz.autoservice.model.Order;
@@ -15,9 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/order")
@@ -39,7 +38,7 @@ public class OrderController {
     }
 
     @PutMapping("/{id}")
-    @Operation (description = "Update order")
+    @Operation(description = "Update order")
     public OrderResponseDto updateOrder(@Parameter(description = "Order id") @PathVariable Long id,
                                         @RequestBody OrderRequestDto requestDto) {
         Order order = orderMapper.toModel(requestDto);
@@ -48,9 +47,9 @@ public class OrderController {
     }
 
     @GetMapping("/by-master/{id}")
-    @Operation (description = "Get order by master id")
+    @Operation(description = "Get order by master id")
     public List<OrderResponseDto> getOrdersByMasterId(@Parameter(description = "Master id")
-                                                          @PathVariable Long id) {
+                                                      @PathVariable Long id) {
         return orderService.getOrdersByMasterId(id)
                 .stream()
                 .map(orderMapper::toDto)
@@ -58,9 +57,9 @@ public class OrderController {
     }
 
     @GetMapping("/by-owner/{id}")
-    @Operation (description = "Get order by owner id")
+    @Operation(description = "Get order by owner id")
     public List<OrderResponseDto> getOrdersByOwnerId(@Parameter(description = "Owner id")
-                                                         @PathVariable Long id) {
+                                                     @PathVariable Long id) {
         return orderService.getOrdersByCarOwnersId(id)
                 .stream()
                 .map(orderMapper::toDto)
@@ -68,28 +67,36 @@ public class OrderController {
     }
 
     @PutMapping("/change/status/{orderId}")
-    @Operation (description = "Change only order status")
-    public OrderResponseDto changeOrderStatus(@Parameter(description = "Order id")
-    @PathVariable Long orderId, @RequestParam String orderStatus) {
+    @Operation(description = "Change only order status")
+    public OrderResponseDto changeOrderStatus(
+            @Parameter(description = "Order id")
+            @PathVariable Long orderId,
+            @RequestParam String orderStatus) {
         return orderMapper.toDto(orderService.changeOrderStatus(orderId, orderStatus));
     }
 
     @PostMapping("/add/product/{orderId}")
-    @Operation (description = "Add product to order")
-    public OrderResponseDto addProductToOrder(@Parameter(description = "Order id")
-                                                  @PathVariable Long orderId, @RequestParam Long productId) {
+    @Operation(description = "Add product to order")
+    public OrderResponseDto addProductToOrder(
+            @Parameter(description = "Order id")
+            @PathVariable Long orderId,
+            @RequestParam Long productId) {
         return orderMapper.toDto(orderService.addServiceToOrder(orderId, productId));
     }
 
     @GetMapping("/{id}")
-    @Operation (description = "Get order by id")
-    public OrderResponseDto getOrderById(@Parameter(description = "Order id") @PathVariable Long id) {
+    @Operation(description = "Get order by id")
+    public OrderResponseDto getOrderById(
+            @Parameter(description = "Order id")
+            @PathVariable Long id) {
         return orderMapper.toDto(orderService.getOrderById(id));
     }
 
     @GetMapping("/cost/{id}")
-    @Operation (description = "Calculate order cost")
-    public OrderResponseDto calculateOrderCost(@Parameter(description = "Order id") @PathVariable Long id) {
+    @Operation(description = "Calculate order cost")
+    public OrderResponseDto calculateOrderCost(
+            @Parameter(description = "Order id")
+            @PathVariable Long id) {
         return orderMapper.toDto(orderService.calculateOrderCost(id));
     }
 

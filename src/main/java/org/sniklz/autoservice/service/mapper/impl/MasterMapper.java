@@ -1,5 +1,7 @@
 package org.sniklz.autoservice.service.mapper.impl;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import org.sniklz.autoservice.dto.request.MasterRequestDto;
 import org.sniklz.autoservice.dto.response.MasterResponseDto;
 import org.sniklz.autoservice.model.Master;
@@ -7,9 +9,6 @@ import org.sniklz.autoservice.model.Order;
 import org.sniklz.autoservice.repository.OrderRepository;
 import org.sniklz.autoservice.service.mapper.UniversalDtoMapper;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class MasterMapper

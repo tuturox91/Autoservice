@@ -37,7 +37,10 @@ public class ServiceController {
 
     @PutMapping("/{id}")
     @Operation(description = "Update service")
-    public ServiceResponseDto updateService(@Parameter(description = "Service id") @PathVariable Long id, @RequestBody ServiceRequestDto requestDto) {
+    public ServiceResponseDto updateService(
+            @Parameter(description = "Service id")
+            @PathVariable Long id,
+            @RequestBody ServiceRequestDto requestDto) {
         Service service = serviceMapper.toModel(requestDto);
         service.setId(id);
         return serviceMapper.toDto(serviceService.update(service));
@@ -45,13 +48,18 @@ public class ServiceController {
 
     @PutMapping("/{serviceId}")
     @Operation (description = "Change Service status")
-    public ServiceResponseDto changeServiceStatus(@Parameter(description = "Service id") @PathVariable Long serviceId, @RequestParam String serviceStatus) {
+    public ServiceResponseDto changeServiceStatus(
+            @Parameter(description = "Service id")
+            @PathVariable Long serviceId,
+            @RequestParam String serviceStatus) {
         return serviceMapper.toDto(serviceService.changeServiceStatus(serviceId, serviceStatus));
     }
 
     @GetMapping("/{id}")
     @Operation (description = "Get service by id")
-    public ServiceResponseDto getServiceById(@Parameter(description = "Service id") @PathVariable Long id) {
+    public ServiceResponseDto getServiceById(
+            @Parameter(description = "Service id")
+            @PathVariable Long id) {
         return serviceMapper.toDto(serviceService.getServiceById(id));
     }
 

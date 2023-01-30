@@ -1,5 +1,8 @@
 package org.sniklz.autoservice.service.mapper.impl;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.sniklz.autoservice.dto.request.CarOwnerRequestDto;
 import org.sniklz.autoservice.dto.response.CarOwnerResponseDto;
 import org.sniklz.autoservice.model.Car;
@@ -9,10 +12,6 @@ import org.sniklz.autoservice.service.CarService;
 import org.sniklz.autoservice.service.OrderService;
 import org.sniklz.autoservice.service.mapper.UniversalDtoMapper;
 import org.springframework.stereotype.Component;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class CarOwnerMapper implements
@@ -25,7 +24,6 @@ public class CarOwnerMapper implements
         this.carService = carService;
         this.orderService = orderService;
     }
-
 
     @Override
     public CarOwner toModel(CarOwnerRequestDto requestDto) {

@@ -10,12 +10,11 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import lombok.Data;
-import org.springframework.data.annotation.CreatedDate;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
 
 @Data
 @Entity

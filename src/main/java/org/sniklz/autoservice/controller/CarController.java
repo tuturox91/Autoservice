@@ -22,7 +22,8 @@ public class CarController {
     private final UniversalDtoMapper<CarRequestDto, CarResponseDto, Car> serviceMapper;
     private final CarService carService;
 
-    public CarController(UniversalDtoMapper<CarRequestDto, CarResponseDto, Car> mapper, CarService carService) {
+    public CarController(UniversalDtoMapper<CarRequestDto,
+            CarResponseDto, Car> mapper, CarService carService) {
         this.serviceMapper = mapper;
         this.carService = carService;
     }
@@ -35,7 +36,10 @@ public class CarController {
 
     @PutMapping("/{id}")
     @Operation(description = "Update car")
-    public  CarResponseDto updateCar(@Parameter(description = "Required car id") @PathVariable Long id, @RequestBody CarRequestDto requestDto) {
+    public CarResponseDto updateCar(
+            @Parameter(description = "Required car id")
+            @PathVariable Long id,
+            @RequestBody CarRequestDto requestDto) {
         Car car = serviceMapper.toModel(requestDto);
         car.setId(id);
         return serviceMapper.toDto(carService.update(car));

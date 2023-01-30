@@ -1,13 +1,7 @@
 package org.sniklz.autoservice.dto.response;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.ManyToOne;
-import lombok.Data;
-import org.sniklz.autoservice.model.Master;
-import org.sniklz.autoservice.model.Service;
-
 import java.math.BigDecimal;
+import lombok.Data;
 
 @Data
 public class ServiceResponseDto {

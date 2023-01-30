@@ -1,5 +1,8 @@
 package org.sniklz.autoservice.service.mapper.impl;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.sniklz.autoservice.dto.request.OrderRequestDto;
 import org.sniklz.autoservice.dto.response.OrderResponseDto;
 import org.sniklz.autoservice.model.Order;
@@ -13,11 +16,6 @@ import org.sniklz.autoservice.service.ServiceService;
 import org.sniklz.autoservice.service.mapper.UniversalDtoMapper;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Component
 public class OrderMapper implements UniversalDtoMapper<OrderRequestDto, OrderResponseDto, Order> {
 
@@ -27,8 +25,11 @@ public class OrderMapper implements UniversalDtoMapper<OrderRequestDto, OrderRes
     private final ProductService productService;
     private final CarService carService;
 
-    public OrderMapper(OrderService orderService, ServiceService serviceService,
-                       CarOwnerService carOwnerService, ProductService productService, CarService carService) {
+    public OrderMapper(
+            OrderService orderService, ServiceService serviceService,
+            CarOwnerService carOwnerService,
+            ProductService productService,
+            CarService carService) {
         this.orderService = orderService;
         this.serviceService = serviceService;
         this.carOwnerService = carOwnerService;

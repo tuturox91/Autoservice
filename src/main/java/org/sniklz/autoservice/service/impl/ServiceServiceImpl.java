@@ -1,11 +1,10 @@
 package org.sniklz.autoservice.service.impl;
 
+import java.util.List;
+import java.util.Set;
 import org.sniklz.autoservice.model.Service;
 import org.sniklz.autoservice.repository.ServiceRepository;
 import org.sniklz.autoservice.service.ServiceService;
-
-import java.util.List;
-import java.util.Set;
 
 @org.springframework.stereotype.Service
 public class ServiceServiceImpl implements ServiceService {
@@ -27,7 +26,6 @@ public class ServiceServiceImpl implements ServiceService {
         return serviceRepository.save(model);
     }
 
-
     @Override
     public Service changeServiceStatus(Long serviceId, String serviceStatus) {
         Service service = getServiceById(serviceId);
@@ -44,6 +42,5 @@ public class ServiceServiceImpl implements ServiceService {
     public Service getServiceById(Long id) {
         return serviceRepository.getReferenceById(id);
     }
-
 
 }

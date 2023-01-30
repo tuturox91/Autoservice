@@ -36,15 +36,19 @@ public class ProductController {
 
     @PutMapping("/{id}")
     @Operation (description = "Update product")
-    public ProductResponseDto updateProduct(@Parameter(description = "Product id") @PathVariable Long id, @RequestBody ProductRequestDto requestDto) {
-        Product Product = productMapper.toModel(requestDto);
-        Product.setId(id);
-        return productMapper.toDto(productService.update(Product));
+    public ProductResponseDto updateProduct(
+            @Parameter(description = "Product id")
+            @PathVariable Long id, @RequestBody ProductRequestDto requestDto) {
+        Product product = productMapper.toModel(requestDto);
+        product.setId(id);
+        return productMapper.toDto(productService.update(product));
     }
 
     @GetMapping("/{id}")
     @Operation (description = "Get product by id")
-    public ProductResponseDto getProductById(@Parameter(description = "Product id") @PathVariable Long id) {
+    public ProductResponseDto getProductById(
+            @Parameter(description = "Product id")
+            @PathVariable Long id) {
         return productMapper.toDto(productService.getProductById(id));
     }
 

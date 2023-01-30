@@ -1,8 +1,7 @@
 package org.sniklz.autoservice.service;
 
-import org.sniklz.autoservice.model.Master;
-
 import java.math.BigDecimal;
+import org.sniklz.autoservice.model.Master;
 
 public interface MasterService extends DefaultService<Master> {
 

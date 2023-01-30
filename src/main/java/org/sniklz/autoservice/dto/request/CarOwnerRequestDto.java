@@ -1,8 +1,7 @@
 package org.sniklz.autoservice.dto.request;
 
-import lombok.Data;
-
 import java.util.List;
+import lombok.Data;
 
 @Data
 public class CarOwnerRequestDto {

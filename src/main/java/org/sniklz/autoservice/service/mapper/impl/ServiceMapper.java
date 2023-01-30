@@ -20,13 +20,13 @@ public class ServiceMapper implements
         this.orderService = orderService;
     }
 
-
     @Override
     public Service toModel(ServiceRequestDto requestDto) {
         Service service = new Service();
         service.setMaster(masterService.getMasterById(requestDto.getMasterId()));
         service.setCost(requestDto.getCost());
-        service.setServiceType(Service.ServiceType.valueOf(requestDto.getServiceType().toUpperCase()));
+        service.setServiceType(Service.ServiceType.valueOf(
+                requestDto.getServiceType().toUpperCase()));
         service.setOrder(orderService.getOrderById(requestDto.getOrderId()));
         return service;
     }

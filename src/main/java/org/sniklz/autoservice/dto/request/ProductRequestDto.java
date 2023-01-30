@@ -1,7 +1,7 @@
 package org.sniklz.autoservice.dto.request;
 
-import lombok.Data;
 import java.math.BigDecimal;
+import lombok.Data;
 
 @Data
 public class ProductRequestDto {

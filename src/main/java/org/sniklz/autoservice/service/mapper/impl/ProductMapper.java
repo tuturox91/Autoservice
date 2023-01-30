@@ -11,7 +11,7 @@ public class ProductMapper implements
         UniversalDtoMapper<ProductRequestDto, ProductResponseDto, Product> {
     @Override
     public Product toModel(ProductRequestDto requestDto) {
-        Product product =  new Product();
+        Product product = new Product();
         product.setCost(requestDto.getCost());
         product.setName(requestDto.getName());
         return product;

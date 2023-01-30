@@ -1,14 +1,14 @@
 package org.sniklz.autoservice.service.impl;
 
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.sniklz.autoservice.model.Master;
 import org.sniklz.autoservice.model.Order;
 import org.sniklz.autoservice.repository.MasterRepository;
 import org.sniklz.autoservice.service.MasterService;
 import org.sniklz.autoservice.service.ServiceService;
 import org.springframework.stereotype.Service;
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class MasterServiceImpl implements MasterService {
@@ -46,9 +46,13 @@ public class MasterServiceImpl implements MasterService {
                 .filter(service -> service.getStatus()
                         .equals(org.sniklz.autoservice.model.Service.ServiceStatus.NOT_PAYED))
                 .collect(Collectors.toList());
-        services.forEach(service -> service.setStatus(org.sniklz.autoservice.model.Service.ServiceStatus.PAYED));
+        services.forEach(service -> service.setStatus(
+                org.sniklz.autoservice.model.Service.ServiceStatus.PAYED));
         services.forEach(service -> serviceService.update(service));
-        BigDecimal resultService = services.stream().map(service -> service.getCost()).reduce(BigDecimal.ZERO, (x, y) -> x.add(y));
+        BigDecimal resultService = services
+                .stream()
+                .map(service -> service.getCost())
+                .reduce(BigDecimal.ZERO, (x, y) -> x.add(y));
         resultService = resultService.multiply(masterSalaryPercent);
         return resultService;
     }

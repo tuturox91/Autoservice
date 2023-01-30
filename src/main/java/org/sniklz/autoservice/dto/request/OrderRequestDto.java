@@ -1,11 +1,9 @@
 package org.sniklz.autoservice.dto.request;
 
-import lombok.Data;
-import org.sniklz.autoservice.model.Order;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import lombok.Data;
 
 @Data
 public class OrderRequestDto {
