@@ -1,0 +1,40 @@
+databaseChangeLog:
+  #sequences
+  - include:
+      file: /db/changelog/changes/car/create-car-id-sequence.sql
+  - include:
+      file: /db/changelog/changes/car-owners/create-car-owners-id-sequence.sql
+  - include:
+      file: /db/changelog/changes/masters/create-masters-id-sequence.sql
+  - include:
+      file: /db/changelog/changes/orders/create-orders-id-sequence.sql
+  - include:
+      file: /db/changelog/changes/product/create-products-id-sequence.sql
+  - include:
+      file: /db/changelog/changes/services/create-services-id-sequence.sql
+  #tables
+  - include:
+      file: /db/changelog/changes/car-owners/create-car-owners-table.sql
+  - include:
+      file: /db/changelog/changes/car/create-car-table.sql
+  - include:
+      file: /db/changelog/changes/masters/create-masters-table.sql
+  - include:
+      file: /db/changelog/changes/orders/create-orders-table.sql
+  - include:
+      file: /db/changelog/changes/product/create-product-table.sql
+  - include:
+      file: /db/changelog/changes/services/create-services-table.sql
+  #constraint tables
+  - include:
+      file: /db/changelog/changes/car-owners/create-owners-cars-table.sql
+  - include:
+      file: /db/changelog/changes/car-owners/create-owners-orders-table.sql
+  - include:
+      file: /db/changelog/changes/masters/create-master-completed-orders-table.sql
+  - include:
+      file: /db/changelog/changes/orders/create-orders-product-table.sql
+  - include:
+      file: /db/changelog/changes/orders/create-orders-service-table.sql
+
+
