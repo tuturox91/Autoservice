@@ -1,5 +1,7 @@
 package org.sniklz.autoservice.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.sniklz.autoservice.dto.request.ProductRequestDto;
 import org.sniklz.autoservice.dto.response.ProductResponseDto;
 import org.sniklz.autoservice.model.Product;
@@ -27,19 +29,22 @@ public class ProductController {
     }
     
     @PostMapping
+    @Operation(description = "Add product")
     public ProductResponseDto addProduct(@RequestBody ProductRequestDto requestDto) {
         return productMapper.toDto(productService.save(productMapper.toModel(requestDto)));
     }
 
     @PutMapping("/{id}")
-    public ProductResponseDto updateProduct(@PathVariable Long id, @RequestBody ProductRequestDto requestDto) {
+    @Operation (description = "Update product")
+    public ProductResponseDto updateProduct(@Parameter(description = "Product id") @PathVariable Long id, @RequestBody ProductRequestDto requestDto) {
         Product Product = productMapper.toModel(requestDto);
         Product.setId(id);
         return productMapper.toDto(productService.update(Product));
     }
 
     @GetMapping("/{id}")
-    public ProductResponseDto getCarById(@PathVariable Long id) {
+    @Operation (description = "Get product by id")
+    public ProductResponseDto getProductById(@Parameter(description = "Product id") @PathVariable Long id) {
         return productMapper.toDto(productService.getProductById(id));
     }
 

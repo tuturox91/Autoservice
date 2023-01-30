@@ -3,7 +3,7 @@
 CREATE TABLE IF NOT EXISTS public.masters
 (
     id bigint NOT NULL,
-    full_name character varying(255),
+    full_name character varying(255) COLLATE pg_catalog."default",
     CONSTRAINT masters_pkey PRIMARY KEY (id)
 )
 

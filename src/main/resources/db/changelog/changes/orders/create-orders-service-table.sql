@@ -4,11 +4,11 @@ CREATE TABLE IF NOT EXISTS public.orders_services
 (
     order_id bigint NOT NULL,
     services_id bigint NOT NULL,
-    CONSTRAINT orders_fk FOREIGN KEY (order_id)
+    CONSTRAINT fkq863ndc65lt9lgj0jg1h8ravg FOREIGN KEY (order_id)
         REFERENCES public.orders (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
-    CONSTRAINT services_fk FOREIGN KEY (services_id)
+    CONSTRAINT fktf3befn48p2sqt2k9qbs1cso3 FOREIGN KEY (services_id)
         REFERENCES public.services (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION

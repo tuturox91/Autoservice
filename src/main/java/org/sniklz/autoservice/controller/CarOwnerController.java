@@ -1,5 +1,7 @@
 package org.sniklz.autoservice.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.sniklz.autoservice.dto.request.CarOwnerRequestDto;
 import org.sniklz.autoservice.dto.response.CarOwnerResponseDto;
 import org.sniklz.autoservice.model.CarOwner;
@@ -27,19 +29,22 @@ public class CarOwnerController {
     }
 
     @PostMapping
+    @Operation (description = "Add owner")
     public CarOwnerResponseDto addCarOwner(@RequestBody CarOwnerRequestDto requestDto) {
         return carOwnerMapper.toDto(carOwnerService.save(carOwnerMapper.toModel(requestDto)));
     }
 
     @PutMapping("/{id}")
-    public  CarOwnerResponseDto updateCarOwner(@PathVariable Long id, @RequestBody CarOwnerRequestDto requestDto) {
+    @Operation (description = "Update owner")
+    public  CarOwnerResponseDto updateCarOwner(@Parameter(description = "Required owner id") @PathVariable Long id, @RequestBody CarOwnerRequestDto requestDto) {
         CarOwner carOwner = carOwnerMapper.toModel(requestDto);
         carOwner.setId(id);
         return carOwnerMapper.toDto(carOwnerService.update(carOwner));
     }
 
     @GetMapping("/{id}")
-    public CarOwnerResponseDto getCarById(@PathVariable Long id) {
+    @Operation (description = "Get owner by id")
+    public CarOwnerResponseDto getOwnerById(@PathVariable Long id) {
         return carOwnerMapper.toDto(carOwnerService.getCarOwnerById(id));
     }
 
