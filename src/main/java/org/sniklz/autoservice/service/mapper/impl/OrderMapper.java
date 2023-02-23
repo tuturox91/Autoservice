@@ -42,11 +42,15 @@ public class OrderMapper implements UniversalDtoMapper<OrderRequestDto, OrderRes
         Order order = new Order();
         order.setCar(carService.getCarById(requestDto.getCarId()));
         order.setDescription(requestDto.getDescription());
-        List<Service> services =
-                serviceService.getServicesByIdIn(new HashSet<>(requestDto.getServicesIds()));
+        List<Service> services = requestDto.getServicesIds()
+                .stream()
+                .map(serviceService::getServiceById)
+                .toList();
         order.setServices(services);
-        List<Product> products =
-                productService.getProductsByIdIn(new HashSet<>(requestDto.getProductsIds()));
+        List<Product> products = requestDto.getProductsIds()
+                .stream()
+                .map(productService::getProductById)
+                .toList();
         order.setProducts(products);
         order.setAcceptOrderTime(requestDto.getAcceptOrderTime());
         order.setOrderStatus(Order.OrderStatus.valueOf(requestDto.getOrderStatus().toUpperCase()));
