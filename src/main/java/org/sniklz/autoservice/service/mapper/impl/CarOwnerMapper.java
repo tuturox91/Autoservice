@@ -28,9 +28,15 @@ public class CarOwnerMapper implements
     @Override
     public CarOwner toModel(CarOwnerRequestDto requestDto) {
         CarOwner carOwner = new CarOwner();
-        List<Car> carList = carService.getCarsByIdIn(new HashSet<>(requestDto.getCarIds()));
+        List<Car> carList = requestDto.getCarIds()
+                .stream()
+                .map(carService::getCarById)
+                .toList();
         carOwner.setCars(carList);
-        List<Order> orders = orderService.getOrdersByIdIn(new HashSet<>(requestDto.getOrderIds()));
+        List<Order> orders = requestDto.getOrderIds()
+                .stream()
+                .map(orderService::getOrderById)
+                .toList();
         carOwner.setOrders(orders);
         return carOwner;
     }
